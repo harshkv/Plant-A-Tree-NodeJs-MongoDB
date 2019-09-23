@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>  Plant a Tree </title>
+      <link rel="stylesheet" href="/css/feedback.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <% include partials/nav.ejs %>
+        <header>
+          <% include partials/headers.ejs %>
+        </header>
+        <div class="container-fluid">
+            <% include partials/sidenav.ejs %>
+              <div class ="main">
+                <ul class="breadcrumb">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/categories" >Categories</a></li>
+                  <li>Item</li>
+                </ul>
+
+
+                <div class="item1">
+                <img src="<%= data.item.imageURL %>" alt ="image did not load">
+                <div class="desc-item">
+                  <h2> <%= data.item.itemName %></h2>
+                  <h3><%= data.item.catalogCategory %></h3>
+                </div>
+                <article class="prduct_Desc"> <br>
+                    <h3> PRODUCT DESCRIPTION </h3>
+                      <p> <%= data.item.description %>   </p>
+                </article>
+                  <fieldset>
+                    <form action="/profileController/updateRating/<%= data.item.itemCode %>" method="POST">
+                      <h3>Current Rating : <%= data.rating%></h3>
+                        <label>Select list</label>
+                          <select name = "myList" class="myList" >
+                            <option value = "1">1 star</option>
+                            <option value = "2"> 2 star</option>
+                            <option value = "3">3 star</option>
+                            <option value = "4">4 star</option>
+                            <option value = "5">5 star</option>
+                          </select>
+                            <button type="submit" class="btn btn-primary">Confirm Rating </button>
+                          </form>
+                           <form action="/profileController/updateMadeit/<%= data.item.itemCode %>" method="POST">
+                            <h3>Current Made It :  <%= data.madeIt %></h3>
+                              <label>Select list</label>
+                                <select name = "madeitList" class="madeitList" >
+                                  <option value = "true"> True</option>
+                                  <option value ="false">  False</option>
+                                    </select>
+                                <button type="submit" class="btn btn-primary" >Confirm Made It </button>
+                          </form>
+                  </fieldset>
+            </div>
+          </div>
+      </div>
+    <% include partials/footer.ejs %>
+  </body>
+</html>

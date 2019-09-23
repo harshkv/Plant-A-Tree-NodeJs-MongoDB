@@ -1,0 +1,7 @@
+<nav class="fixed-top">
+  <% if(userdata != ""){ %>
+      <p class="topfix">Welcome <%= userdata.FirstName %> !</p>
+  <% }else { %>
+      <p class="topfix">  Not Signed In </p>
+  <% }  %>
+</nav>

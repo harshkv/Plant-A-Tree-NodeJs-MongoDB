@@ -1,0 +1,13 @@
+<div class="head">
+  <h1> <img src="/Images/green11.png" alt="Thumbnail" width="100" height="100"> Plant A Tree   </h1>
+  <h3> Building a Healthier Ecosystem </h3>
+</div>
+<nav class="navbar">
+    <% if(userdata != ""){ %>
+    <a class="navbar-brand" href="/profileController/signout"> Sign out! </a>
+  <%} else {%>
+    <a class="navbar-brand" href="/profileController/signin"> Sign in! </a>
+  <% }%>
+  <a class="navbar-brand" href="/profileController/myitems"> My Plants  </a>
+  <a class="navbar-brand" href="#"> My Cart </a>
+</nav>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>  Plant a Tree </title>
+    <link rel="stylesheet" href="/css/myitems.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+      <% include partials/nav.ejs %>
+    <header>
+      <% include partials/headers.ejs %>
+    </header>
+      <div class="container-fluid">
+        <% include partials/sidenav.ejs %>
+
+        <div class ="main">
+          <h3> Your saved list ! </h3> <br>
+          <table style="width:100%">
+
+            <tr>
+              <th>Plants</th>
+              <th>Category</th>
+              <th>My Rating</th>
+              <th>own it</th>
+              <th> Delete </th>
+              <th> Update </th>
+            </tr>
+              <% for(var i=0; i < saveData.length; i++){ %>
+            <tr>
+              <td>
+                <% if( saveData[i].madeIt == 'false' || saveData[i].madeIt == false ){ %>
+                <a href="/categories/item/<%= saveData[i].itemCode%>" ><%= saveData[i].itemName%></a>
+              <%} else { %>
+              <a href="/categories/item/<%= saveData[i].itemCode%>" > <i class="fa fa-bookmark-o"></i> <%= saveData[i].itemName%> </a>
+            <%  } %>
+              </td>
+              <td><%= saveData[i].catalogCategory%> </td>
+              <td>
+                <% let count = saveData[i].rating;
+                  for(let j=0;j< 5;j++){
+                    if(count > 0){  %>
+                      <span class="fa fa-star checked"></span>
+                     <% }else{  %>
+                      <span class="fa fa-star"></span>
+                <%    }
+                    count = count - 1;
+                  }%>
+              </td>
+              <td>    <%= saveData[i].madeIt %>  </td>
+              <td>
+                <form action="/profileController/deleteItem/<%= saveData[i].itemCode%>" method="POST" >
+                <button type="submit" class="btn btn-primary">Delete </button>
+                </form>
+              </td>
+              <td>
+                <form action="/profileController/feedback/<%=saveData[i].itemCode%>" method="POST" >
+                <button type="submit" class="btn btn-primary">Update </button>
+                </form>
+              </td>
+            </tr>
+          <%} %>
+        </table>
+        <div class="pagebottom">
+          <p> <a href="/categories" class="btn btn-primary" > Continue Shopping </a> </p>
+            <p><i class="fa fa-bookmark-o"></i>  Indicate that this Plant is tried by you! </p>
+            <p> Click <a href="#" class="disabled">here</a> to share a new plant guide </p>
+        </div>
+      </div>
+    </div>
+    <% include partials/footer.ejs %>
+  </body>
+</html>

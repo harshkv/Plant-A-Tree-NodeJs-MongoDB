@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>  Plant a Tree </title>
+      <link rel="stylesheet" href="/css/signin.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <% include partials/nav.ejs %>
+        <header>
+          <% include partials/headers.ejs %>
+        </header>
+        <div class="container-fluid">
+            <% include partials/sidenav.ejs %>
+              <div class ="main">
+                <form action="/profileController" Method="POST">
+                  <div class="form-group col-sm-6">
+                    <label for="EmailAddress">Email address</label>
+                    <input type="email" class="form-control" name="EmailAddress" aria-describedby="emailHelp" value="<%= userdata.EmailAddress %>">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                  <div class="form-group col-sm-6">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control" name="Password" value="<%= userdata.Password %>">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <!-- <input type="hidden" name="EmailAddress" > -->
+                  <!-- <input type="hidden" name="Password" > -->
+
+                </form>
+
+          </div>
+      </div>
+    <% include partials/footer.ejs %>
+  </body>
+</html>

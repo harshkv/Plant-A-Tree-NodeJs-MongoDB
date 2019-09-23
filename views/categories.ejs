@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Plant a Tree </title>
+    <link rel="stylesheet" href="/css/categories.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+        <% include partials/nav.ejs %>
+      <header>
+          <% include partials/headers.ejs %>
+      </header>
+      <div class="container-fluid">
+          <% include partials/sidenav.ejs %>
+          <div class ="main">
+              <%  for(var i=0; i< data.categories.length; i++){ %>
+                <h2> <%= data.categories[i] %></h2>
+                <ul class="list-group">
+                    <% for(var j=0; j< data.items.length;j++){
+                      if(data.categories[i] === data.items[j].catalogCategory){ %>
+                          <li class="list-group-item"><a href="/categories/item/<%= data.items[j].itemCode %>"> <%= data.items[j].itemName %></a></li>
+                <% } }%>
+                </ul>
+            <% } %>
+          </div>
+      </div>
+  <% include partials/footer.ejs %>
+  </body>
+</html>
